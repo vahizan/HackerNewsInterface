@@ -15,7 +15,7 @@ const success = (payload)=>{
 const failure = (error)=>{
 	return {
 		type:STORY_LIST_FAILED,
-		error
+		payload:error
 	}
 }
 export const stories = () => (dispatch) =>{

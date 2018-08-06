@@ -1,14 +1,20 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
+import CommentList from '../CommentList/CommentList';
 
 export class Story extends Component{
 	componentWillMount(){
-		
+
 	}
 	render(){
 		const {id} = this.props;
 		return(
-			<div className="story">{id}</div>
+			<div id={id} className="story">
+				<div className="title"></div>
+				<div className="author"></div>
+				<div className="date"></div>
+				<CommentList/>
+			</div>
 		);
 	}
 }
