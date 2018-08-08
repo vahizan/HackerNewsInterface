@@ -1,0 +1,16 @@
+.story, .story-enlarge {
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  background: linear-gradient(to right, #0082c8, #0082c8);
+  max-width: 150px;
+  max-height: 500px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  color: #FEFEFE; }
+
+.story-enlarge {
+  max-width: 250px;
+  max-height: 600px; }
+
+/*# sourceMappingURL=Story.css.map */

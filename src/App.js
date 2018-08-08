@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import './App.css';
+import './styles/css/App.css';
 import {stories} from './Components/StoryList/StoryListActions';
 import {StoryList} from './Components/StoryList/StoryList';
 
 class App extends Component {
   componentWillMount(){
-      this.props.stories();
+      this.props.storyids();
   }
   render() {
-    const {isPending,ids,error} = this.props;
+    const {isPending,stories,error} = this.props;
     return (
       <div className="App">
         <header >
           <h1 >Y Combinator Articles</h1>
         </header>
-        <StoryList stories={ids}/>
+        <StoryList stories={stories} />
 
       </div>
     );
@@ -24,14 +24,14 @@ class App extends Component {
 
 const mapStateToProps = (state) =>{
   return {
-     ids: state.storyList.ids,
+     stories: state.storyList.stories,
      isPending: state.storyList.isPending,
      error: state.storyList.error
   }
 }
 const mapDispatchToProps = (dispatch) =>{
   return{
-    stories: ()=> dispatch(stories())
+    storyids: ()=> dispatch(stories())
   }
 }
 

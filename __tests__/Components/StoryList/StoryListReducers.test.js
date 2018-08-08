@@ -7,7 +7,8 @@ import {STORY_LIST_URL,
 	STORY_LIST_SUCCESS,
 	STORY_LIST_PENDING,
 	STORY_LIST_FAILED,
-	STORY_LIST_FAILED_MESSAGE
+	STORY_LIST_FAILED_MESSAGE,
+	STORY_LIST_CLICKED
 } from '../../../src/Components/StoryList/StoryListConstants';
 
 describe('configure reducer', ()=>{
@@ -15,7 +16,7 @@ describe('configure reducer', ()=>{
 	beforeEach(()=>{
 		currentState = {
 			isPending: true,
-			ids:[],
+			stories:[],
 			error: ""
 		}
 	});
@@ -23,7 +24,7 @@ describe('configure reducer', ()=>{
 		const action = {type:'dummy'}
 		const initialState = {
 			isPending: false,
-			ids:[],
+			stories:[],
 			error: ""
 		}
 		expect(storyListReducers.storyList(undefined,action)).toEqual(initialState);
@@ -32,7 +33,7 @@ describe('configure reducer', ()=>{
 		const action = {type: STORY_LIST_FAILED,payload:STORY_LIST_FAILED_MESSAGE}
 		const expectedState = {
 			isPending: false,
-			ids:[],
+			stories:[],
 			error: STORY_LIST_FAILED_MESSAGE
 		}
 		
@@ -42,7 +43,7 @@ describe('configure reducer', ()=>{
 		const action = {type: STORY_LIST_PENDING}
 		const expectedState = {
 			isPending: true,
-			ids:[],
+			stories:[],
 			error: ""
 		}
 		
@@ -52,10 +53,30 @@ describe('configure reducer', ()=>{
 		const action = {type: STORY_LIST_SUCCESS,payload:["success"]}
 		const expectedState = {
 			isPending: false,
-			ids:["success"],
+			stories:["success"],
 			error: ""
 		}
 
 		expect(storyListReducers.storyList(currentState,action)).toEqual(expectedState);
+	});
+
+	describe("testing story click ",()=>{
+		let initialState;
+		let initialAction;
+		beforeEach(()=>{
+			initialState = {
+				isToggleOn: false
+			}
+			initialAction = {
+				type: STORY_LIST_CLICKED,
+				clickCount:0
+			}
+		});
+		test("set isToggleOn to true after calling clickState ",()=>{
+			const updatedState = {
+				isToggleOn: true,
+			}
+			expect(storyListReducers.clickState(initialState,initialAction)).toEqual(updatedState);
+		});
 	});
 });

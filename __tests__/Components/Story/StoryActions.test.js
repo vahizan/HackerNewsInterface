@@ -4,8 +4,9 @@ import thunk from 'redux-thunk';
 import { shallow, mount, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import  * as storyActions from '../../../src/Components/Story/StoryActions';
-import { Story } from '../../../src/Components/Story/Story';
-import {ITEM_URL,STORY_PENDING,STORY_SUCCESS,STORY_FAIL} from '../../../src/Components/Story/StoryConstants.js';
+import  Story  from '../../../src/Components/Story/Story';
+import {ITEM_URL,STORY_PENDING,STORY_SUCCESS,STORY_FAILED,STORY_CLICKED} from '../../../src/Components/Story/StoryConstants.js';
+import {STORY_LIST_FAILED_MESSAGE,MOCK_URL} from '../../../src/Components/StoryList/StoryListConstants.js';
 import configureStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import fetch from 'isomorphic-fetch';
@@ -35,8 +36,7 @@ describe('Story Actions',()=>{
 		});
 		test("default maxitem URL if null argument ", ()=>{
 			expect(ITEM_URL(null)).toEqual("https://hacker-news.firebaseio.com/v0/maxitem.json?print=pretty");
-		});
-	});
+		});});
 
 	describe("Story Actions", ()=>{
 		test("return pending action type and empty array payload", ()=>{
@@ -47,8 +47,19 @@ describe('Story Actions',()=>{
 			];
 			
 			store.dispatch(storyActions.story());
-			expect(store.getActions()).toEqual(expectedActions);
-		});
+			expect(store.getActions()).toEqual(expectedActions);});
+		test("return failed action type and error message in payload", ()=>{
+			const expectedActions = [
+				{
+					type: STORY_FAILED,
+					payload: STORY_LIST_FAILED_MESSAGE
+				}
+			];
+			fetchMock.getOnce(`begin:${MOCK_URL}`,
+				Promise.reject({type:STORY_FAILED,payload:STORY_LIST_FAILED_MESSAGE}));
+			return store.dispatch(storyActions.story()).catch((error=>{
+				expect(store.getActions()).toEqual(expectedActions);
+			}));});
 		test("Successfully completes action and retrieves payload", ()=>{
 			const expectedActions = [
 				{type: STORY_PENDING},
@@ -84,11 +95,9 @@ describe('Story Actions',()=>{
 					headers: { 'content-type': 'application/json' }
 			});
 			
-			return store.dispatch(storyActions.story()).then(()=>{
+			return store.dispatch(storyActions.story(2921506)).then(()=>{
 				 expect(store.getActions()).toEqual(expectedActions);
-			});
-			
-		});
+			});});
 	});
 	
 	
