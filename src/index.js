@@ -7,8 +7,8 @@ import {Provider} from 'react-redux';
 import {createStore,combineReducers, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import {createLogger} from 'redux-logger';
-import {storyList} from './Components/StoryList/StoryListReducers';
-import {storyValues} from './Components/Story/StoryReducers';
+import {storyList} from './Containers/StoryList/StoryListReducers';
+import {storyValues} from './Containers/Story/StoryReducers';
 
 const logger = createLogger();
 const reducer = combineReducers({storyList,storyValues});

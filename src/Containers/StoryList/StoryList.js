@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import Story from "../Story/Story";
-import {connect} from 'react-redux';
 import {STORY_LIST_SUCCESS} from './StoryListConstants.js';
 import "../../styles/css/StoryList.css";
 
-export class StoryList extends Component{
-	render(){
-		const {stories} = this.props; 
+const StoryList = ({stories}) =>{
+	//render(){
+		//const {stories} = this.props; 
 		return (stories !== undefined && stories.type === STORY_LIST_SUCCESS)
 		?  <div className="storyList" >
 				{
@@ -30,7 +29,7 @@ export class StoryList extends Component{
 				}
 		   </div>
 		: <div className="loading"> Loading Content </div>
-	}
+	//}
 }
 
 export default StoryList;

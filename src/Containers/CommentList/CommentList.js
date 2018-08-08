@@ -1,12 +1,12 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
+import {Comment} from '../../Components/Comment/Comment';
 
 export class CommentList extends Component{
 	render(){
-		const {ids} = this.props;
 		return (
 			<div>
-				
+				<Comment/>
 			</div>
 		);
 	}

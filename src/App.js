@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './styles/css/App.css';
-import {stories} from './Components/StoryList/StoryListActions';
-import {StoryList} from './Components/StoryList/StoryList';
+import {stories} from './Containers/StoryList/StoryListActions';
+import StoryList from './Containers/StoryList/StoryList';
 
 class App extends Component {
   componentWillMount(){

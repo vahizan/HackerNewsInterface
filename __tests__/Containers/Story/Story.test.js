@@ -2,10 +2,10 @@ import Enzyme from 'enzyme';
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { Story } from '../../../src/Components/Story/Story';
-import {STORY,ITEM_URL} from '../../../src/Components/Story/StoryConstants';
-import {MOCK_URL} from '../../../src/Components/StoryList/StoryListConstants';
-import {CommentList} from '../../../src/Components/CommentList/CommentList';
+import { Story } from '../../../src/Containers/Story/Story';
+import {STORY,ITEM_URL} from '../../../src/Containers/Story/StoryConstants';
+import {MOCK_URL} from '../../../src/Containers/StoryList/StoryListConstants';
+import {CommentList} from '../../../src/Containers/CommentList/CommentList';
 import fetchMock from 'fetch-mock';
 import fetch from 'isomorphic-fetch';
 
@@ -46,13 +46,19 @@ describe('<Story/>',()=>{
 		test('story component has one author class', ()=>{
 			expect(story().find(".author").length).toEqual(1);
 		});
-		test("Clicking on story should expand its size",()=>{
-			
+		test("Clicking on story should change toggle state to true",()=>{
+			story().find('.story').simulate('click',{target: {isToggleOn: true}});
+			expect(wrapper.state('isToggleOn')).toEqual(true);
 		});
-
-		
-			
-
+		test("isToggleOn truthy should change class name from story to story-enlarge",()=>{
+			story().find('.story').simulate('click',{target: {isToggleOn: true}});
+			expect(wrapper.find('.story-enlarge').length).toEqual(1);
+		});
+		test("isToggleOn to false after clicking on story-enlarge",()=>{
+			story().find('.story').simulate('click',{target: {isToggleOn: true}});
+			story().find('.story-enlarge').simulate('click',{target: {isToggleOn: false}});
+			expect(wrapper.state('isToggleOn')).toEqual(false);
+		});
 
 	});
 	

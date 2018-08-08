@@ -1,4 +1,4 @@
-import {STORY_LIST_SUCCESS,STORY_LIST_PENDING,STORY_LIST_FAILED,STORY_LIST_CLICKED} from './StoryListConstants.js';
+import {STORY_LIST_SUCCESS,STORY_LIST_PENDING,STORY_LIST_FAILED} from './StoryListConstants.js';
 
 const initialStoryListState = {
 	isPending: false,

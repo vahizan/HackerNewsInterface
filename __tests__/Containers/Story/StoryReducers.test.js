@@ -2,14 +2,14 @@ import Enzyme from 'enzyme';
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import * as storyReducers  from '../../../src/Components/Story/StoryReducers';
+import * as storyReducers  from '../../../src/Containers/Story/StoryReducers';
 import {ITEM_URL,
 	STORY_SUCCESS,
 	STORY_PENDING,
 	STORY_FAILED,
 	STORY_CLICKED
-} from '../../../src/Components/Story/StoryConstants';
-import {STORY_LIST_FAILED_MESSAGE} from '../../../src/Components/StoryList/StoryListConstants';
+} from '../../../src/Containers/Story/StoryConstants';
+import {STORY_LIST_FAILED_MESSAGE} from '../../../src/Containers/StoryList/StoryListConstants';
 
 describe('configure reducer', ()=>{
 	let initialState;

@@ -2,14 +2,14 @@ import Enzyme from 'enzyme';
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import * as storyListReducers  from '../../../src/Components/StoryList/StoryListReducers';
+import * as storyListReducers  from '../../../src/Containers/StoryList/StoryListReducers';
 import {STORY_LIST_URL,
 	STORY_LIST_SUCCESS,
 	STORY_LIST_PENDING,
 	STORY_LIST_FAILED,
 	STORY_LIST_FAILED_MESSAGE,
 	STORY_LIST_CLICKED
-} from '../../../src/Components/StoryList/StoryListConstants';
+} from '../../../src/Containers/StoryList/StoryListConstants';
 
 describe('configure reducer', ()=>{
 	let currentState;
@@ -60,23 +60,5 @@ describe('configure reducer', ()=>{
 		expect(storyListReducers.storyList(currentState,action)).toEqual(expectedState);
 	});
 
-	describe("testing story click ",()=>{
-		let initialState;
-		let initialAction;
-		beforeEach(()=>{
-			initialState = {
-				isToggleOn: false
-			}
-			initialAction = {
-				type: STORY_LIST_CLICKED,
-				clickCount:0
-			}
-		});
-		test("set isToggleOn to true after calling clickState ",()=>{
-			const updatedState = {
-				isToggleOn: true,
-			}
-			expect(storyListReducers.clickState(initialState,initialAction)).toEqual(updatedState);
-		});
-	});
+	
 });

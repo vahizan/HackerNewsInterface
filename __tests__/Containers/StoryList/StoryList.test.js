@@ -2,9 +2,9 @@ import Enzyme from 'enzyme';
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { StoryList } from '../../../src/Components/StoryList/StoryList';
-import  Story  from '../../../src/Components/Story/Story';
-import {STORY_LIST_URL,STORY_LIST_SUCCESS,STORY_LIST_FAILED} from '../../../src/Components/StoryList/StoryListConstants';
+import  StoryList  from '../../../src/Containers/StoryList/StoryList';
+import  Story  from '../../../src/Containers/Story/Story';
+import {STORY_LIST_URL,STORY_LIST_SUCCESS,STORY_LIST_FAILED} from '../../../src/Container/StoryList/StoryListConstants';
 
 describe('<StoryList/>',()=>{
 	describe('render component correctly',()=>{
