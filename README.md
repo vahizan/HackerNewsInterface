@@ -21,7 +21,7 @@ b) SASS installed on your local environment
 
 # What does the app currently do?
 
-App provides a view with all 500 stories, each stories can be clicked to expand.
+App provides a view with all 500 stories, each story can be clicked to expand.
 
 # What needs to be done
 
